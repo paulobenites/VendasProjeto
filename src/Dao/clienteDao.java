@@ -74,7 +74,7 @@ public class clienteDao {
                 obj.setComplemento(rs.getString("complemento"));
                 obj.setBairro(rs.getString("bairro"));
                 obj.setCidade(rs.getString("cidade"));
-                obj.setUf(rs.getString("uf"));
+                obj.setUf(rs.getString("estado"));
 
                 lista.add(obj);
             }
