@@ -49,8 +49,8 @@ public class clienteDao {
 
     public void alterarCliente(cliente obj) {
         try {
-            String sql = "update tb_clientes nome=?,rg=?,cpf=?,email=?,telefone=?,celular=?,cep=?"
-                       +"endereco=?,numero=?,complemento=?,bairro=?,cidade=?,estad=? where id=?";
+            String sql = "update tb_clientes set nome =?,rg =?,cpf =?,email =?,telefone =?,celular =?,cep =?,endereco =?,numero =?,complemento =?,bairro =?,cidade =?,estado =? where id =?";
+                   
 
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, obj.getName());
@@ -66,7 +66,7 @@ public class clienteDao {
             stmt.setString(11, obj.getBairro());
             stmt.setString(12, obj.getCidade());
             stmt.setString(13, obj.getUf());
-            stmt.setInt(14,obj.getId());
+            stmt.setInt(14, obj.getId());
 
             stmt.execute();
             stmt.close();
