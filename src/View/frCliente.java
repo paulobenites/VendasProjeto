@@ -87,13 +87,13 @@ public class frCliente extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         txtCpf = new javax.swing.JFormattedTextField();
         jLabel14 = new javax.swing.JLabel();
-        bntPesquisar = new javax.swing.JButton();
+        btn = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         txtNumero = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        txtNome2 = new javax.swing.JTextField();
-        bntPesquisar2 = new javax.swing.JButton();
+        txtPesquisa = new javax.swing.JTextField();
+        bntPesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaClientes = new javax.swing.JTable();
         bntNovo = new javax.swing.JButton();
@@ -286,8 +286,8 @@ public class frCliente extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Cpf:");
 
-        bntPesquisar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        bntPesquisar.setText("Pesquisar");
+        btn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn.setText("Pesquisar");
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel16.setText("Nº:");
@@ -356,7 +356,7 @@ public class frCliente extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bntPesquisar))
+                                .addComponent(btn))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -389,7 +389,7 @@ public class frCliente extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bntPesquisar))
+                    .addComponent(btn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -430,18 +430,23 @@ public class frCliente extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel15.setText("Nome:");
 
-        txtNome2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtNome2.addActionListener(new java.awt.event.ActionListener() {
+        txtPesquisa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtPesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNome2ActionPerformed(evt);
+                txtPesquisaActionPerformed(evt);
+            }
+        });
+        txtPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPesquisaKeyPressed(evt);
             }
         });
 
-        bntPesquisar2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        bntPesquisar2.setText("Pesquisar");
-        bntPesquisar2.addActionListener(new java.awt.event.ActionListener() {
+        bntPesquisar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bntPesquisar.setText("Pesquisar");
+        bntPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntPesquisar2ActionPerformed(evt);
+                bntPesquisarActionPerformed(evt);
             }
         });
 
@@ -468,9 +473,9 @@ public class frCliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtNome2, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bntPesquisar2)
+                .addComponent(bntPesquisar)
                 .addGap(19, 311, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
@@ -480,8 +485,8 @@ public class frCliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(txtNome2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bntPesquisar2))
+                    .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bntPesquisar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
         );
@@ -599,9 +604,9 @@ public class frCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCpfActionPerformed
 
-    private void txtNome2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNome2ActionPerformed
+    private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNome2ActionPerformed
+    }//GEN-LAST:event_txtPesquisaActionPerformed
 
     private void bntNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntNovoActionPerformed
         // TODO add your handling code here:
@@ -678,9 +683,34 @@ public class frCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbUfActionPerformed
 
-    private void bntPesquisar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntPesquisar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bntPesquisar2ActionPerformed
+    private void bntPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntPesquisarActionPerformed
+        // botao pesquisar:
+        String nome = "%"+ txtPesquisa.getText()+"%";
+        clienteDao dao = new clienteDao();
+        List<cliente> lista = dao.buscarClientePorNome(nome);
+        DefaultTableModel dados = (DefaultTableModel)tabelaClientes.getModel();
+        dados.setNumRows(0);
+        
+        for(cliente c:lista){
+        dados.addRow(new Object[]{
+           c.getId(),
+           c.getName(),
+           c.getRg(),
+           c.getCpf(),
+           c.getEmail(),
+           c.getTelefone(),
+           c.getCelular(),
+           c.getCep(),
+           c.getEndereco(),
+           c.getNumero(),
+           c.getComplemento(),
+           c.getBairro(),
+           c.getCidade(),
+           c.getUf()
+        });
+        
+        }
+    }//GEN-LAST:event_bntPesquisarActionPerformed
 
     private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
         // TODO add your handling code here:
@@ -709,6 +739,35 @@ public class frCliente extends javax.swing.JFrame {
         txtCidade.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 12).toString());
         cbUf.setSelectedItem(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 13).toString());
     }//GEN-LAST:event_tabelaClientesMouseClicked
+
+    private void txtPesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyPressed
+        // TODO add your handling code here:
+        String nome = "%"+ txtPesquisa.getText()+"%";
+        clienteDao dao = new clienteDao();
+        List<cliente> lista = dao.buscarClientePorNome(nome);
+        DefaultTableModel dados = (DefaultTableModel)tabelaClientes.getModel();
+        dados.setNumRows(0);
+        
+        for(cliente c:lista){
+        dados.addRow(new Object[]{
+           c.getId(),
+           c.getName(),
+           c.getRg(),
+           c.getCpf(),
+           c.getEmail(),
+           c.getTelefone(),
+           c.getCelular(),
+           c.getCep(),
+           c.getEndereco(),
+           c.getNumero(),
+           c.getComplemento(),
+           c.getBairro(),
+           c.getCidade(),
+           c.getUf()
+        });
+        
+        }
+    }//GEN-LAST:event_txtPesquisaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -750,8 +809,8 @@ public class frCliente extends javax.swing.JFrame {
     private javax.swing.JButton bntExcluir;
     private javax.swing.JButton bntNovo;
     private javax.swing.JButton bntPesquisar;
-    private javax.swing.JButton bntPesquisar2;
     private javax.swing.JButton bntSalvar;
+    private javax.swing.JButton btn;
     private javax.swing.JComboBox<String> cbUf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -785,8 +844,8 @@ public class frCliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtNome2;
     private javax.swing.JTextField txtNumero;
+    private javax.swing.JTextField txtPesquisa;
     private javax.swing.JFormattedTextField txtRg;
     private javax.swing.JFormattedTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
