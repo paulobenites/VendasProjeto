@@ -160,7 +160,7 @@ public class clienteDao {
             return null;
         }
     }
-    public cliente buscaPorNome(String nome){
+    public cliente consultaPorNome(String nome){
         try {
             String sql = "Select * from tb_clientes where nome = ?";
             PreparedStatement stmt = con.prepareStatement(sql);

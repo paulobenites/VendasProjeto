@@ -17,31 +17,31 @@ import javax.swing.table.DefaultTableModel;
  * @author paulo
  */
 public class frCliente extends javax.swing.JFrame {
-    
-    public void listar(){
+
+    public void listar() {
         clienteDao dao = new clienteDao();
         List<cliente> lista = dao.listaClientes();
-        DefaultTableModel dados = (DefaultTableModel)tabelaClientes.getModel();
+        DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
         dados.setNumRows(0);
-        
-        for(cliente c:lista){
-        dados.addRow(new Object[]{
-           c.getId(),
-           c.getName(),
-           c.getRg(),
-           c.getCpf(),
-           c.getEmail(),
-           c.getTelefone(),
-           c.getCelular(),
-           c.getCep(),
-           c.getEndereco(),
-           c.getNumero(),
-           c.getComplemento(),
-           c.getBairro(),
-           c.getCidade(),
-           c.getUf()
-        });
-        
+
+        for (cliente c : lista) {
+            dados.addRow(new Object[]{
+                c.getId(),
+                c.getName(),
+                c.getRg(),
+                c.getCpf(),
+                c.getEmail(),
+                c.getTelefone(),
+                c.getCelular(),
+                c.getCep(),
+                c.getEndereco(),
+                c.getNumero(),
+                c.getComplemento(),
+                c.getBairro(),
+                c.getCidade(),
+                c.getUf()
+            });
+
         }
     }
 
@@ -88,7 +88,7 @@ public class frCliente extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         txtCpf = new javax.swing.JFormattedTextField();
         jLabel14 = new javax.swing.JLabel();
-        btn = new javax.swing.JButton();
+        btnBusca = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         txtNumero = new javax.swing.JTextField();
         panelClientes = new javax.swing.JPanel();
@@ -288,8 +288,13 @@ public class frCliente extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Cpf:");
 
-        btn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn.setText("Pesquisar");
+        btnBusca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnBusca.setText("Pesquisar");
+        btnBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscaActionPerformed(evt);
+            }
+        });
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel16.setText("Nº:");
@@ -358,7 +363,7 @@ public class frCliente extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn))
+                                .addComponent(btnBusca))
                             .addGroup(panelCadastroLayout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -391,7 +396,7 @@ public class frCliente extends javax.swing.JFrame {
                 .addGroup(panelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn))
+                    .addComponent(btnBusca))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -632,25 +637,25 @@ public class frCliente extends javax.swing.JFrame {
             obj.setBairro(txtBairro.getText());
             obj.setCidade(txtCidade.getText());
             obj.setUf(cbUf.getSelectedItem().toString());
-            
+
             clienteDao dao = new clienteDao();
             dao.cadastrarCliente(obj);
-            
+
             new utilitarios().limpaTela(panelCadastro);
 
         } catch (Exception erro) {
-            JOptionPane.showInputDialog(null,"Erro!"+erro);
+            JOptionPane.showInputDialog(null, "Erro!" + erro);
         }
     }//GEN-LAST:event_bntSalvarActionPerformed
 
     private void bntExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntExcluirActionPerformed
         // bt excluir:
-        cliente obj = new cliente(); 
-            obj.setId(Integer.parseInt(txtCodigo.getText()));
-            
-            clienteDao dao = new clienteDao();
-            dao.excluirCliente(obj);
-            new utilitarios().limpaTela(panelCadastro);
+        cliente obj = new cliente();
+        obj.setId(Integer.parseInt(txtCodigo.getText()));
+
+        clienteDao dao = new clienteDao();
+        dao.excluirCliente(obj);
+        new utilitarios().limpaTela(panelCadastro);
     }//GEN-LAST:event_bntExcluirActionPerformed
 
     private void bntEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEditarActionPerformed
@@ -670,16 +675,16 @@ public class frCliente extends javax.swing.JFrame {
             obj.setBairro(txtBairro.getText());
             obj.setCidade(txtCidade.getText());
             obj.setUf(cbUf.getSelectedItem().toString());
-            
+
             obj.setId(Integer.parseInt(txtCodigo.getText()));
-            
+
             clienteDao dao = new clienteDao();
             dao.alterarCliente(obj);
-            
+
             new utilitarios().limpaTela(panelCadastro);
 
         } catch (Exception erro) {
-            JOptionPane.showInputDialog(null,"Erro!"+erro);
+            JOptionPane.showInputDialog(null, "Erro!" + erro);
         }
     }//GEN-LAST:event_bntEditarActionPerformed
 
@@ -693,30 +698,30 @@ public class frCliente extends javax.swing.JFrame {
 
     private void bntPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntPesquisarActionPerformed
         // botao pesquisar:
-        String nome = "%"+ txtPesquisa.getText()+"%";
+        String nome = "%" + txtPesquisa.getText() + "%";
         clienteDao dao = new clienteDao();
         List<cliente> lista = dao.buscarClientePorNome(nome);
-        DefaultTableModel dados = (DefaultTableModel)tabelaClientes.getModel();
+        DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
         dados.setNumRows(0);
-        
-        for(cliente c:lista){
-        dados.addRow(new Object[]{
-           c.getId(),
-           c.getName(),
-           c.getRg(),
-           c.getCpf(),
-           c.getEmail(),
-           c.getTelefone(),
-           c.getCelular(),
-           c.getCep(),
-           c.getEndereco(),
-           c.getNumero(),
-           c.getComplemento(),
-           c.getBairro(),
-           c.getCidade(),
-           c.getUf()
-        });
-        
+
+        for (cliente c : lista) {
+            dados.addRow(new Object[]{
+                c.getId(),
+                c.getName(),
+                c.getRg(),
+                c.getCpf(),
+                c.getEmail(),
+                c.getTelefone(),
+                c.getCelular(),
+                c.getCep(),
+                c.getEndereco(),
+                c.getNumero(),
+                c.getComplemento(),
+                c.getBairro(),
+                c.getCidade(),
+                c.getUf()
+            });
+
         }
     }//GEN-LAST:event_bntPesquisarActionPerformed
 
@@ -750,32 +755,61 @@ public class frCliente extends javax.swing.JFrame {
 
     private void txtPesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyPressed
         // TODO add your handling code here:
-        String nome = "%"+ txtPesquisa.getText()+"%";
+        String nome = "%" + txtPesquisa.getText() + "%";
         clienteDao dao = new clienteDao();
         List<cliente> lista = dao.buscarClientePorNome(nome);
-        DefaultTableModel dados = (DefaultTableModel)tabelaClientes.getModel();
+        DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
         dados.setNumRows(0);
-        
-        for(cliente c:lista){
-        dados.addRow(new Object[]{
-           c.getId(),
-           c.getName(),
-           c.getRg(),
-           c.getCpf(),
-           c.getEmail(),
-           c.getTelefone(),
-           c.getCelular(),
-           c.getCep(),
-           c.getEndereco(),
-           c.getNumero(),
-           c.getComplemento(),
-           c.getBairro(),
-           c.getCidade(),
-           c.getUf()
-        });
-        
+
+        for (cliente c : lista) {
+            dados.addRow(new Object[]{
+                c.getId(),
+                c.getName(),
+                c.getRg(),
+                c.getCpf(),
+                c.getEmail(),
+                c.getTelefone(),
+                c.getCelular(),
+                c.getCep(),
+                c.getEndereco(),
+                c.getNumero(),
+                c.getComplemento(),
+                c.getBairro(),
+                c.getCidade(),
+                c.getUf()
+            });
+
         }
     }//GEN-LAST:event_txtPesquisaKeyPressed
+
+    private void btnBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaActionPerformed
+        // buscar Cliente por nome:
+
+        String nome = txtNome.getText();
+        cliente obj = new cliente();
+        clienteDao dao = new clienteDao();
+
+        obj = dao.consultaPorNome(nome);
+        if (obj.getName() != null) {
+
+            txtCodigo.setText(String.valueOf(obj.getId()));
+            txtNome.setText(obj.getName());
+            txtRg.setText(obj.getRg());
+            txtCpf.setText(obj.getCpf());
+            txtEmail.setText(obj.getEmail());
+            txtTelefone.setText(obj.getTelefone());
+            txtCelular.setText(obj.getCelular());
+            txtCep.setText(obj.getCep());
+            txtEndereco.setText(obj.getEndereco());
+            txtNumero.setText(String.valueOf(obj.getNumero()));
+            txtComplemento.setText(obj.getComplemento());
+            txtBairro.setText(obj.getBairro());
+            txtCidade.setText(obj.getCidade());
+            cbUf.setSelectedItem(obj.getUf());
+        } else {
+            JOptionPane.showMessageDialog(null, "Cliente não Encontrado");
+        }
+    }//GEN-LAST:event_btnBuscaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -818,7 +852,7 @@ public class frCliente extends javax.swing.JFrame {
     private javax.swing.JButton bntNovo;
     private javax.swing.JButton bntPesquisar;
     private javax.swing.JButton bntSalvar;
-    private javax.swing.JButton btn;
+    private javax.swing.JButton btnBusca;
     private javax.swing.JComboBox<String> cbUf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
