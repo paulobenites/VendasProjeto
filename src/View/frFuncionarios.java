@@ -6,7 +6,9 @@
 package View;
 
 import Dao.clienteDao;
+import Dao.funcionariosDao;
 import Model.cliente;
+import Model.funcionarios;
 import Model.utilitarios;
 import java.awt.event.KeyEvent;
 import java.util.List;
@@ -189,7 +191,7 @@ public class frFuncionarios extends javax.swing.JFrame {
         jLabel6.setText("Telefone:");
 
         try {
-            txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) # ####-####")));
+            txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)  ####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -462,15 +464,16 @@ public class frFuncionarios extends javax.swing.JFrame {
                     .addComponent(jLabel16)
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelCadastroFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12)
-                    .addComponent(cbUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelCadastroFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelCadastroFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10)
+                        .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel11)
+                        .addComponent(jLabel12)
+                        .addComponent(cbUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelCadastroFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -679,11 +682,15 @@ public class frFuncionarios extends javax.swing.JFrame {
     private void bntSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalvarActionPerformed
         // Botao Slvar
         try {
-            cliente obj = new cliente();
+            funcionarios obj = new funcionarios();
             obj.setName(txtNome.getText());
             obj.setRg(txtRg.getText());
             obj.setCpf(txtCpf.getText());
             obj.setEmail(txtEmail.getText());
+            obj.setSenha(txtSenha.getText());
+            obj.setCargo(txtCargo.getText());
+            obj.setNivelAcesso(cbNivelAcesso.getSelectedItem().toString());
+            
             obj.setTelefone(txtTelefone.getText());
             obj.setCelular(txtCelular.getText());
             obj.setCep(txtCep.getText());
@@ -694,8 +701,8 @@ public class frFuncionarios extends javax.swing.JFrame {
             obj.setCidade(txtCidade.getText());
             obj.setUf(cbUf.getSelectedItem().toString());
 
-            clienteDao dao = new clienteDao();
-            dao.cadastrarCliente(obj);
+            funcionariosDao dao = new funcionariosDao();
+            dao.cadastrarFuncionarios(obj);
 
             new utilitarios().limpaTela(panelCadastroF);
 
