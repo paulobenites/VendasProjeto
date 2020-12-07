@@ -22,18 +22,21 @@ import javax.swing.table.DefaultTableModel;
 public class frFuncionarios extends javax.swing.JFrame {
 
     public void listar() {
-        clienteDao dao = new clienteDao();
-        List<cliente> lista = dao.listaClientes();
+        funcionariosDao dao = new funcionariosDao();
+        List<funcionarios> lista = dao.listaFuncionario();
         DefaultTableModel dados = (DefaultTableModel) tabelaFuncionarios.getModel();
         dados.setNumRows(0);
 
-        for (cliente c : lista) {
+        for (funcionarios c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getName(),
                 c.getRg(),
                 c.getCpf(),
                 c.getEmail(),
+                c.getSenha(),
+                c.getCargo(),
+                c.getNivelAcesso(),
                 c.getTelefone(),
                 c.getCelular(),
                 c.getCep(),

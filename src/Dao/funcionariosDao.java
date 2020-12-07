@@ -2,6 +2,7 @@
 package Dao;
 
 import Jdbc.conectionFactory;
+
 import Model.funcionarios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -90,5 +91,7 @@ public class funcionariosDao {
         }
 
     }
+     
+    
     
 }
