@@ -768,18 +768,21 @@ public class frFuncionarios extends javax.swing.JFrame {
     private void bntPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntPesquisarActionPerformed
         // botao pesquisar:
         String nome = "%" + txtPesquisa.getText() + "%";
-        clienteDao dao = new clienteDao();
-        List<cliente> lista = dao.buscarClientePorNome(nome);
+        funcionariosDao dao = new funcionariosDao();
+        List<funcionarios> lista = dao.buscarFuncionarioPorNome(nome);
         DefaultTableModel dados = (DefaultTableModel) tabelaFuncionarios.getModel();
         dados.setNumRows(0);
 
-        for (cliente c : lista) {
+        for (funcionarios c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getName(),
                 c.getRg(),
                 c.getCpf(),
                 c.getEmail(),
+                c.getSenha(),
+                c.getCargo(),
+                c.getNivelAcesso(),
                 c.getTelefone(),
                 c.getCelular(),
                 c.getCep(),
@@ -826,20 +829,22 @@ public class frFuncionarios extends javax.swing.JFrame {
     }//GEN-LAST:event_tabelaFuncionariosMouseClicked
 
     private void txtPesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyPressed
-        // TODO add your handling code here:
         String nome = "%" + txtPesquisa.getText() + "%";
-        clienteDao dao = new clienteDao();
-        List<cliente> lista = dao.buscarClientePorNome(nome);
+        funcionariosDao dao = new funcionariosDao();
+        List<funcionarios> lista = dao.buscarFuncionarioPorNome(nome);
         DefaultTableModel dados = (DefaultTableModel) tabelaFuncionarios.getModel();
         dados.setNumRows(0);
 
-        for (cliente c : lista) {
+        for (funcionarios c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getName(),
                 c.getRg(),
                 c.getCpf(),
                 c.getEmail(),
+                c.getSenha(),
+                c.getCargo(),
+                c.getNivelAcesso(),
                 c.getTelefone(),
                 c.getCelular(),
                 c.getCep(),
@@ -858,8 +863,8 @@ public class frFuncionarios extends javax.swing.JFrame {
         // buscar Cliente por nome:
 
         String nome = txtNome.getText();
-        cliente obj = new cliente();
-        clienteDao dao = new clienteDao();
+        funcionarios obj = new funcionarios();
+        funcionariosDao dao = new funcionariosDao();
 
         obj = dao.consultaPorNome(nome);
         if (obj.getName() != null) {
@@ -869,6 +874,9 @@ public class frFuncionarios extends javax.swing.JFrame {
             txtRg.setText(obj.getRg());
             txtCpf.setText(obj.getCpf());
             txtEmail.setText(obj.getEmail());
+            txtSenha.setText(obj.getSenha());
+            txtCargo.setText(obj.getCargo());
+            cbNivelAcesso.setSelectedItem(obj.getNivelAcesso());
             txtTelefone.setText(obj.getTelefone());
             txtCelular.setText(obj.getCelular());
             txtCep.setText(obj.getCep());
@@ -879,7 +887,7 @@ public class frFuncionarios extends javax.swing.JFrame {
             txtCidade.setText(obj.getCidade());
             cbUf.setSelectedItem(obj.getUf());
         } else {
-            JOptionPane.showMessageDialog(null, "Cliente não Encontrado");
+            JOptionPane.showMessageDialog(null, "Funcionario não Encontrado");
         }
     }//GEN-LAST:event_btnBuscaActionPerformed
 
