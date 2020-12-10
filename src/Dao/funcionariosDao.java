@@ -4,6 +4,7 @@ package Dao;
 import Jdbc.conectionFactory;
 
 import Model.funcionarios;
+import View.frMenu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -211,5 +212,26 @@ public class funcionariosDao {
         }
     }
     
+      public void logar(String email, String senha){
+      
+          try {
+              String sql ="select*from tb_funcionarios where email = ? and senha=?";
+              PreparedStatement stmt = con.prepareStatement(sql);
+              stmt.setString(1,email);
+              stmt.setString(2, senha);
+              ResultSet rs = stmt.executeQuery();
+              
+              if(rs.next()){
+                  JOptionPane.showMessageDialog(null, "Seja bem vindo ao Sistema");
+                  frMenu tela = new frMenu();
+                  tela.setVisible(true);
+              
+              }else{
+                  JOptionPane.showMessageDialog(null, "Dados incorretos!");
+              }
+          } catch (SQLException e) {
+              JOptionPane.showMessageDialog(null, "ERRO!"+e);
+          }
+      }
     
 }

@@ -5,6 +5,9 @@
  */
 package View;
 
+import Dao.funcionariosDao;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author paulo
@@ -36,7 +39,7 @@ public class frLogin extends javax.swing.JFrame {
         jbEntrar = new javax.swing.JButton();
         jbSair = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Bem vindo");
 
         jPanel4.setBackground(new java.awt.Color(51, 102, 255));
@@ -141,6 +144,17 @@ public class frLogin extends javax.swing.JFrame {
 
     private void jbEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEntrarActionPerformed
         // TODO add your handling code here:
+        try {
+            String email,senha;
+            email = txtEmail.getText();
+            senha = txtSenha.getText();
+            
+            funcionariosDao dao = new funcionariosDao();
+            dao.logar(email, senha);
+            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "erro");
+        }
     }//GEN-LAST:event_jbEntrarActionPerformed
 
     /**
@@ -179,15 +193,9 @@ public class frLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JButton jbEntrar;
     private javax.swing.JButton jbSair;
