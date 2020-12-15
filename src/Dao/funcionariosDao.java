@@ -4,6 +4,7 @@ package Dao;
 import Jdbc.conectionFactory;
 
 import Model.funcionarios;
+import View.frLogin;
 import View.frMenu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -229,6 +230,7 @@ public class funcionariosDao {
               
               }else{
                   JOptionPane.showMessageDialog(null, "Dados incorretos!");
+                  new frLogin().setVisible(true);
               }
           } catch (SQLException e) {
               JOptionPane.showMessageDialog(null, "ERRO!"+e);
