@@ -224,6 +224,7 @@ public class funcionariosDao {
               if(rs.next()){
                   JOptionPane.showMessageDialog(null, "Seja bem vindo ao Sistema");
                   frMenu tela = new frMenu();
+                  tela.usuariologado = rs.getString("nome");
                   tela.setVisible(true);
               
               }else{
