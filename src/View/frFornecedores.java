@@ -6,7 +6,9 @@
 package View;
 
 import Dao.clienteDao;
+import Dao.fornecedoresDao;
 import Model.cliente;
+import Model.fornecedores;
 import Model.utilitarios;
 import java.awt.event.KeyEvent;
 import java.util.List;
@@ -600,10 +602,9 @@ public class frFornecedores extends javax.swing.JFrame {
     private void bntSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalvarActionPerformed
         // Botao Slvar
         try {
-            cliente obj = new cliente();
+            fornecedores obj = new fornecedores();
             obj.setName(txtNome.getText());
-            obj.setRg(txtCnpj.getText());
-            obj.setCpf(txtCpf.getText());
+            obj.setCnpj(txtCnpj.getText());
             obj.setEmail(txtEmail.getText());
             obj.setTelefone(txtTelefone.getText());
             obj.setCelular(txtCelular.getText());
@@ -615,8 +616,8 @@ public class frFornecedores extends javax.swing.JFrame {
             obj.setCidade(txtCidade.getText());
             obj.setUf(cbUf.getSelectedItem().toString());
 
-            clienteDao dao = new clienteDao();
-            dao.cadastrarCliente(obj);
+            fornecedoresDao dao = new fornecedoresDao();
+            dao.cadastrarFornecedores(obj);
 
             new utilitarios().limpaTela(panelCadastro);
 
