@@ -102,7 +102,7 @@ public class fornecedoresDao {
     public List<fornecedores> listarFornrcedores() {
         try {
             List<fornecedores> lista = new ArrayList<>();
-            String sql = "Select * from tb_clientes";
+            String sql = "Select * from tb_fornecedores";
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -166,7 +166,7 @@ public class fornecedoresDao {
     
      public fornecedores consultaFornecedoresPorNome(String nome){
         try {
-            String sql = "Select * from tb_clientes where nome = ?";
+            String sql = "Select * from tb_fornecedores where nome = ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, nome);
             ResultSet rs = stmt.executeQuery();
@@ -189,8 +189,8 @@ public class fornecedoresDao {
             }
             return obj;
             
-        } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "Cliente não Encontrado" + erro );
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "fornecedor não Encontrado" );
             return null;
         }
     }
