@@ -7,8 +7,10 @@ package View;
 
 import Dao.clienteDao;
 import Dao.fornecedoresDao;
+import Dao.produtosDao;
 import Model.cliente;
 import Model.fornecedores;
+import Model.produtos;
 import Model.utilitarios;
 import java.awt.event.KeyEvent;
 import java.util.List;
@@ -397,23 +399,17 @@ public class frProdurto extends javax.swing.JFrame {
     private void bntSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalvarActionPerformed
         // Botao Slvar
         try {
-            cliente obj = new cliente();
-            obj.setName(txtDescricao.getText());
-            obj.setRg(txtRg.getText());
-            obj.setCpf(txtCpf.getText());
-            obj.setEmail(txtPreco.getText());
-            obj.setTelefone(txtTelefone.getText());
-            obj.setCelular(txtCelular.getText());
-            obj.setCep(txtCep.getText());
-            obj.setEndereco(txtEndereco.getText());
-            obj.setNumero(Integer.parseInt(txtNumero.getText()));
-            obj.setComplemento(txtComplemento.getText());
-            obj.setBairro(txtBairro.getText());
-            obj.setCidade(txtCidade.getText());
-            obj.setUf(cbFornecedor.getSelectedItem().toString());
-
-            clienteDao dao = new clienteDao();
-            dao.cadastrarCliente(obj);
+            produtos obj = new produtos();
+            obj.setDescricao(txtDescricao.getText());
+            obj.setPreco(Double.parseDouble(txtPreco.getText()));
+            obj.setQtd_estoque(Integer.parseInt(txtQtdEstoque.getText()));
+            
+            fornecedores f = new fornecedores();
+            f=(fornecedores)cbFornecedor.getSelectedItem();
+            obj.setFornecedor(f);
+            
+            produtosDao dao = new produtosDao();
+            dao.cadastrar(obj);
 
             new utilitarios().limpaTela(panelCadastro);
 

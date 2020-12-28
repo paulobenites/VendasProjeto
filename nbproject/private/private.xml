@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/paulo/OneDrive/Documents/NetBeansProjects/VendasProjeto/src/Dao/fornecedoresDao.java</file>
-            <file>file:/C:/Users/paulo/OneDrive/Documents/NetBeansProjects/VendasProjeto/src/Model/fornecedores.java</file>
-            <file>file:/C:/Users/paulo/OneDrive/Documents/NetBeansProjects/VendasProjeto/src/View/frFornecedores.java</file>
+            <file>file:/C:/Users/paulo/OneDrive/Documents/NetBeansProjects/VendasProjeto/src/Model/produtos.java</file>
+            <file>file:/C:/Users/paulo/OneDrive/Documents/NetBeansProjects/VendasProjeto/src/Dao/produtosDao.java</file>
+            <file>file:/C:/Users/paulo/OneDrive/Documents/NetBeansProjects/VendasProjeto/src/Dao/clienteDao.java</file>
         </group>
     </open-files>
 </project-private>
