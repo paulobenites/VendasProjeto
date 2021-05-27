@@ -41,7 +41,37 @@ public class produtosDao {
             JOptionPane.showInputDialog(null, "Erro!" + erro);
         }
     
-    }   
+    }
+    public void alterar(produtos obj){
+        try{
+            String sql ="update tb_produtos set descricao=?,preco=?,qtd_estoque=?,for_id=? where id=?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1,obj.getDescricao());
+            stmt.setDouble(2, obj.getPreco());
+            stmt.setInt(3, obj.getQtd_estoque());
+            stmt.setInt(4, obj.getFornecedor().getId());
+            stmt.setInt(5, obj.getId());
+            stmt.execute();
+            stmt.close();
+            
+            JOptionPane.showMessageDialog(null, "Produto alterado com Sucesso!");
+        }catch(Exception erro){
+            JOptionPane.showMessageDialog(null, "Erro" + erro);
+        }
+    }
+    public void excluir(produtos obj){
+        try{
+            String sql = "delete from tb_produto where id=?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, obj.getId());
+            stmt.execute();
+            stmt.close();
+            
+            JOptionPane.showMessageDialog(null, "Produto excluido com Sucesso!");
+        }catch(Exception erro){
+            JOptionPane.showMessageDialog(null, "Erro" + erro );
+        }
+    }
     public List<produtos> listaProdutos() {
         try {
             List<produtos> lista = new ArrayList<>();

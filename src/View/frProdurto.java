@@ -420,22 +420,21 @@ public class frProdurto extends javax.swing.JFrame {
     }//GEN-LAST:event_bntExcluirActionPerformed
 
     private void bntEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEditarActionPerformed
-        // BT EDITAR:
-        try {
-            cliente obj = new cliente();
-            
-            obj.setUf(cbFornecedor.getSelectedItem().toString());
-
-            obj.setId(Integer.parseInt(txtCodigo.getText()));
-
-            clienteDao dao = new clienteDao();
-            dao.alterarCliente(obj);
-
-            new utilitarios().limpaTela(panelCadastro);
-
-        } catch (Exception erro) {
-            JOptionPane.showInputDialog(null, "Erro!" + erro);
-        }
+        
+        produtos obj = new produtos();
+        obj.setId(Integer.parseInt(txtCodigo.getText()));
+        obj.setDescricao(txtDescricao.getText());
+        obj.setPreco(Double.parseDouble(txtPreco.getText()));
+        obj.setQtd_estoque(Integer.parseInt(txtQtdEstoque.getText()));
+        
+        fornecedores f = new fornecedores();
+        f = (fornecedores)cbFornecedor.getSelectedItem();
+        obj.setFornecedor(f);
+        produtosDao dao = new produtosDao();
+        dao.alterar(obj);
+        
+        new utilitarios().limpaTela(panelCadastro);
+      
     }//GEN-LAST:event_bntEditarActionPerformed
 
     private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
@@ -485,8 +484,14 @@ public class frProdurto extends javax.swing.JFrame {
         jTabbedPane1.setSelectedIndex(0);
         txtCodigo.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 0).toString());
         txtDescricao.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 1).toString());
-        txtPreco.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 4).toString());
-        cbFornecedor.setSelectedItem(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 13).toString());
+        txtPreco.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 2).toString());
+        txtQtdEstoque.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(),3).toString());
+        
+        fornecedores f = new fornecedores();
+        fornecedoresDao dao = new fornecedoresDao();
+        f = dao.consultaFornecedoresPorNome(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(),4).toString());
+        cbFornecedor.removeAllItems();
+        cbFornecedor.getModel().setSelectedItem(f);
     }//GEN-LAST:event_tabelaProdutoMouseClicked
 
     private void txtPesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyPressed
