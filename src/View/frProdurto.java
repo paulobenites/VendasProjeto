@@ -411,11 +411,11 @@ public class frProdurto extends javax.swing.JFrame {
 
     private void bntExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntExcluirActionPerformed
         // bt excluir:
-        cliente obj = new cliente();
+        produtos obj = new produtos();
         obj.setId(Integer.parseInt(txtCodigo.getText()));
 
-        clienteDao dao = new clienteDao();
-        dao.excluirCliente(obj);
+        produtosDao dao = new produtosDao();
+        dao.excluir(obj);
         new utilitarios().limpaTela(panelCadastro);
     }//GEN-LAST:event_bntExcluirActionPerformed
 

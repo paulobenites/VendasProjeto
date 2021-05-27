@@ -61,7 +61,7 @@ public class produtosDao {
     }
     public void excluir(produtos obj){
         try{
-            String sql = "delete from tb_produto where id=?";
+            String sql = "delete from tb_produtos where id=?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, obj.getId());
             stmt.execute();
