@@ -24,27 +24,18 @@ import javax.swing.table.DefaultTableModel;
 public class frProdurto extends javax.swing.JFrame {
 
     public void listar() {
-        clienteDao dao = new clienteDao();
-        List<cliente> lista = dao.listaClientes();
+        produtosDao dao = new produtosDao();
+        List<produtos> lista = dao.listaProdutos();
         DefaultTableModel dados = (DefaultTableModel) tabelaProduto.getModel();
         dados.setNumRows(0);
 
-        for (cliente c : lista) {
+        for (produtos c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
-                c.getName(),
-                c.getRg(),
-                c.getCpf(),
-                c.getEmail(),
-                c.getTelefone(),
-                c.getCelular(),
-                c.getCep(),
-                c.getEndereco(),
-                c.getNumero(),
-                c.getComplemento(),
-                c.getBairro(),
-                c.getCidade(),
-                c.getUf()
+                c.getDescricao(),
+                c.getPreco(),
+                c.getQtd_estoque(),
+                c.getFornecedor().getName()
             });
 
         }
@@ -432,18 +423,7 @@ public class frProdurto extends javax.swing.JFrame {
         // BT EDITAR:
         try {
             cliente obj = new cliente();
-            obj.setName(txtDescricao.getText());
-            obj.setRg(txtRg.getText());
-            obj.setCpf(txtCpf.getText());
-            obj.setEmail(txtPreco.getText());
-            obj.setTelefone(txtTelefone.getText());
-            obj.setCelular(txtCelular.getText());
-            obj.setCep(txtCep.getText());
-            obj.setEndereco(txtEndereco.getText());
-            obj.setNumero(Integer.parseInt(txtNumero.getText()));
-            obj.setComplemento(txtComplemento.getText());
-            obj.setBairro(txtBairro.getText());
-            obj.setCidade(txtCidade.getText());
+            
             obj.setUf(cbFornecedor.getSelectedItem().toString());
 
             obj.setId(Integer.parseInt(txtCodigo.getText()));
@@ -505,17 +485,7 @@ public class frProdurto extends javax.swing.JFrame {
         jTabbedPane1.setSelectedIndex(0);
         txtCodigo.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 0).toString());
         txtDescricao.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 1).toString());
-        txtRg.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 2).toString());
-        txtCpf.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 3).toString());
         txtPreco.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 4).toString());
-        txtTelefone.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 5).toString());
-        txtCelular.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 6).toString());
-        txtCep.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 7).toString());
-        txtEndereco.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 8).toString());
-        txtNumero.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 9).toString());
-        txtComplemento.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 10).toString());
-        txtBairro.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 11).toString());
-        txtCidade.setText(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 12).toString());
         cbFornecedor.setSelectedItem(tabelaProduto.getValueAt(tabelaProduto.getSelectedRow(), 13).toString());
     }//GEN-LAST:event_tabelaProdutoMouseClicked
 

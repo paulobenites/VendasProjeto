@@ -47,6 +47,7 @@ public class produtosDao {
             List<produtos> lista = new ArrayList<>();
             String sql = "select p.id, p.descricao, p.preco, p.qtd_estoque, f.nome from tb_produtos as p "
                           +"inner join tb_fornecedores as f on (p.for_id = f.id)";
+            
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -54,7 +55,7 @@ public class produtosDao {
                 fornecedores f = new fornecedores();
                 
                 obj.setId(rs.getInt("p.id"));
-                obj.setDescricao(rs.getString("p.descrico"));
+                obj.setDescricao(rs.getString("p.descricao"));
                 obj.setPreco(rs.getDouble("p.preco"));
                 obj.setQtd_estoque(rs.getInt("p.qtd_estoque"));
                 f.setName(rs.getString("f.nome"));
